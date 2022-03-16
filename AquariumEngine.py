@@ -21,12 +21,12 @@ class Pipe():
     def __init__(self):
         self.x = 100
         self.y = 100
-        self.radius = 70
+        self.diameter = 70
         # list of Food objects which have been added to this pipe
         self.food_pieces = []
 
     def add_food(self):
-        self.food_pieces.append(Food(self.x, 70))
+        self.food_pieces.append(Food(self.x + self.diameter / 2, 0))
 
     def move_food(self, boundary_y):
         ######################################################
@@ -55,7 +55,7 @@ class Fish(pygame.sprite.Sprite):
         # (you can open the image in the assets folder to see what it looks like)
         image_unscaled = pygame.image.load(os.path.join("assets", "goldfish_left.png"))
 
-        # Scale the player's character have the specified height and width
+        # Scale the player's character to the specified height and width
         self.image = pygame.transform.rotate(pygame.transform.scale(
             image_unscaled, (self.width, self.height)), 0)
 

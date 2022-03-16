@@ -9,6 +9,7 @@ fontsize = 25
 game_side_padding = 25
 top_offset = 25
 bottom_spacing = 65
+border_width = 10
 
 # colour constants
 BORDER_COLOUR = (13, 161, 146)
@@ -16,6 +17,7 @@ CREAM = (242, 235, 211)
 BACKGROUND_COLOUR = (19, 189, 172)
 WHITE = (255, 255, 255)
 PIPE_COLOUR = (131, 214, 206)
+FOOD_COLOUR = (13, 161, 146)
 
 
 def setup_display(game_width, game_height):
@@ -40,7 +42,7 @@ def draw_board(
 
     # draw all food
     for food_item in pipe.food_pieces:
-        pygame.draw.circle(display, BORDER_COLOUR, (pipe.x + (pipe.radius / 2), food_item.y),
+        pygame.draw.circle(display, FOOD_COLOUR, (food_item.x, food_item.y),
                            food_item.radius, 0)
 
     # draw over food overlapping border
@@ -65,7 +67,7 @@ def draw_board(
     display.blit(score_surf, (score_x, score_y))
 
     # display pipe
-    pygame.draw.rect(display, PIPE_COLOUR, (pipe.x, pipe.y, pipe.radius, 330))
+    pygame.draw.rect(display, PIPE_COLOUR, (pipe.x, pipe.y, pipe.diameter, 330))
 
     # display player
     display.blit(player.image, (player.x, player.y))
@@ -77,4 +79,4 @@ def draw_board(
                       game_width,
                       game_height
                       ),
-                     10)
+                     border_width)
